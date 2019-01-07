@@ -2,6 +2,10 @@
 ## functions do
 
 ## Write a short comment describing this function
+##       set the value of the matrix
+##       get the value of the matrix
+##       set the value of the matrix-inverse
+##       get the value of the matrix-inverse
 
 makeCacheMatrix <- function(x = matrix()) {
      m<-NULL
@@ -19,7 +23,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
-
+## Calculates matrix-inverse, but if it was already computed before, then
+## it retrieves the cached value and returns that.
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
         m <- x$getinverse()
@@ -27,8 +32,9 @@ cacheSolve <- function(x, ...) {
                 message("getting cached data")
                 return(m)
         }
+     # if no cached data, then get matrix and calculate its inverse
         data <- x$get()
-        m <- inverse(data, ...)
+       m<-solve(data)
         x$setinverse(m)
         m
 }
